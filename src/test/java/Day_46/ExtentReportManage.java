@@ -1,0 +1,63 @@
+package Day_46;
+
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
+public class ExtentReportManage implements ITestListener {
+
+    // UI of the report
+    public ExtentSparkReporter sparkReporter;
+
+    // Populate common info on the report
+    public ExtentReports extent;
+
+    // Create test case entries and update test status
+    public ExtentTest test;
+
+    public void onStart(ITestContext context) {
+
+        sparkReporter = new ExtentSparkReporter("C:\\Automation25\\Workspace1");
+        sparkReporter.config().setDocumentTitle("Automation Report");
+        sparkReporter.config().setReportName("Functional Testing");
+        sparkReporter.config().setTheme(Theme.DARK);
+
+        extent = new ExtentReports();
+        extent.attachReporter(sparkReporter);
+
+        extent.setSystemInfo("Computer Name", "localhost");
+        extent.setSystemInfo("Environment", "QA");
+        extent.setSystemInfo("Tester Name", "Pavan");
+        extent.setSystemInfo("OS", "Windows");
+        extent.setSystemInfo("Browser", "Chrome");
+    }
+
+    public void onTestSuccess(ITestResult result) {
+        test = extent.createTest(result.getName());
+        test.log(Status.PASS, "Test case PASSED: " + result.getName());
+    }
+
+    public void onTestFailure(ITestResult result) {
+        test = extent.createTest(result.getName());
+        test.log(Status.FAIL, "Test case FAILED: " + result.getName());
+        test.log(Status.FAIL, "Failure cause: " + result.getThrowable());
+    }
+
+
+    public void onTestSkipped(ITestResult result) {
+        test = extent.createTest(result.getName());
+        test.log(Status.SKIP, "Test case SKIPPED: " + result.getName());
+    }
+
+ 
+    public void onFinish(ITestContext context) {
+        extent.flush(); // Generate the report
+    }
+}
+
