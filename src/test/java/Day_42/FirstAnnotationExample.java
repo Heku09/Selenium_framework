@@ -19,5 +19,5 @@ public class FirstAnnotationExample {
 	void logout() {
 		System.out.println("Logged out");
 	}
-	
+
 }

@@ -14,7 +14,7 @@ public class C2 {
 
 	@AfterTest
 	void AT() {
-		System.out.println("This is After Test method");
+		System.out.println("After Test");
 	}
 
 

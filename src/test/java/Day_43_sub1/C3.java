@@ -1,5 +1,6 @@
 package Day_43_sub1;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -7,7 +8,7 @@ import org.testng.annotations.Test;
 public class C3 {
 	
 	@Test
-	public void suite() {
+	void suite() {
 		System.out.println("Suite");
 	}
 	
@@ -19,6 +20,11 @@ public class C3 {
 	@AfterSuite
 	void AS() {
 		System.out.println("After Suite");
+	}
+	
+	@AfterMethod
+	void AM() {
+		System.out.println("After Method");
 	}
 
 }

@@ -10,10 +10,9 @@
     <run>
     <include name="sanity"></include>
     <exclude name="regression"></exclude>
-    </run>  
+    </run>
   </groups>
-  
-  
+
     <classes>
       <class name="Day_44.Grouping.LoginTest"/>
       <class name="Day_44.Grouping.SignUp"/>

@@ -4,6 +4,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+// THIS CLASS IS JUST AN EXAMPLES OF WHAT ALL METHODS WE HAVE UNDER TESTRUNNERS
 public class MyListeners implements ITestListener {
 	
 	public void onStart(ITestContext context) {
